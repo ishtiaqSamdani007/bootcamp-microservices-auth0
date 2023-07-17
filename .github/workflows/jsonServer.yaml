@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - "frontend/db/**"
+      - ".github/workflows/jsonServer.yaml"
 env:
   GITHUB_USER: ishtiaqsamdani007
 
@@ -58,4 +59,3 @@ jobs:
 
 
 
-            
