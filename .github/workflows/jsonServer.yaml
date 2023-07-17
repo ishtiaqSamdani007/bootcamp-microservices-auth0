@@ -1,0 +1,61 @@
+name: build and deploy mock server
+on:
+  push:
+    paths:
+      - "frontend/db/**"
+env:
+  GITHUB_USER: ishtiaqsamdani007
+
+jobs:
+  build:
+    defaults:
+      run:
+        working-directory: frontend/db
+    runs-on: ubuntu-latest
+
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ env.GITHUB_USER }}
+          password: ${{ secrets.GIT_TOKEN }}
+
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v2
+        with:
+          context: ./frontend/db
+          push: true
+          tags: ghcr.io/${{ env.GITHUB_USER }}/auth0-json-server:latest
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: adding eks-cluster
+        env:
+            aws_region: ${{ secrets.AWS_REGION }}
+            cluster_name: ${{ secrets.CLUSTER_NAME }}
+            IMAGE: ghcr.io/${{ env.GITHUB_USER }}/vote-k8s-frontend:${{ github.sha }}
+        run: |
+            aws eks --region $aws_region update-kubeconfig --name $cluster_name
+            kubectl apply -f kubernetes/deployments/deployment.yaml
+            kubectl apply -f kubernetes/services/service.yaml
+
+
+
+
+
+
+
+
+
+            
