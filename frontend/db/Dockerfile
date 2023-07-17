@@ -1,6 +1,6 @@
 FROM node:18-alpine3.15
 
-COPY . .
+COPY db.json .
 
 RUN npm install -g json-server
 

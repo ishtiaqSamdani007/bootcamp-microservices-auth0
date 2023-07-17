@@ -1,0 +1,31 @@
+# deployment file for json server
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: json-server
+  labels:
+    role: json-server
+    env: demo
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      role: json-server
+  template:
+    metadata:
+      labels:
+        role: json-server
+    spec:
+      containers:
+        - name: json-server
+          image: ghcr.io/ishtiaqsamdani007/auth0-json-server:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3005
+      imagePullSecrets:
+        - name: my-docker-secret

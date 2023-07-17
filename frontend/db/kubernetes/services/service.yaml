@@ -1,0 +1,13 @@
+# service file for mock json server
+apiVersion: v1
+kind: Service
+metadata:
+  name: json-server
+  labels:
+    role: json-server
+    env: demo
+spec:
+  ports:
+    - port: 3005
+  selector:
+    role: json-server
