@@ -45,7 +45,7 @@ jobs:
         env:
             aws_region: ${{ secrets.AWS_REGION }}
             cluster_name: ${{ secrets.CLUSTER_NAME }}
-            IMAGE: ghcr.io/${{ env.GITHUB_USER }}/vote-k8s-frontend:${{ github.sha }}
+            IMAGE: ghcr.io/${{ env.GITHUB_USER }}/vote-k8s-frontend:latest
         run: |
             aws eks --region $aws_region update-kubeconfig --name $cluster_name
             kubectl apply -f kubernetes/deployments/deployment.yaml
@@ -55,7 +55,7 @@ jobs:
 
 
 
-            
+
 
 
 
