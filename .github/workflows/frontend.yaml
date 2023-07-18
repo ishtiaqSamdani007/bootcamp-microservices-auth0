@@ -68,6 +68,9 @@ jobs:
           kubeclt set image deployment/frontend frontend=$IMAGE
 
 
+          
+
+
 
 
 

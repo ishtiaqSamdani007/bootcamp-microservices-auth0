@@ -1,0 +1,331 @@
+# deployment for spring boot microservice address-service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: address-service
+  labels:
+    role: address-service
+    env: demo
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      role: address-service
+  template:
+    metadata:
+      labels:
+        role: address-service
+    spec:
+      containers:
+        - name: address-service
+          image: ghcr.io/ishtiaqsamdani007/address-service:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9001
+      imagePullSecrets:
+        - name: my-docker-secret
+---
+
+# deployment for spring boot microservice appointment-service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appointment-service
+  labels:
+    role: appointment-service
+    env: demo
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      role: appointment-service
+  template:
+    metadata:
+      labels:
+        role: appointment-service
+    spec:
+      containers:
+        - name: appointment-service
+          image: ghcr.io/ishtiaqsamdani007/appointment-service:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9002
+      imagePullSecrets:
+        - name: my-docker-secret
+
+---
+
+# deployment for spring boot microservice card-service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: card-service
+  labels:
+    role: card-service
+    env: demo
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      role: card-service
+  template:
+    metadata:
+      labels:
+        role: card-service
+    spec:
+      containers:
+        - name: card-service
+          image: ghcr.io/ishtiaqsamdani007/card-service:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9003
+      imagePullSecrets:
+        - name: my-docker-secret
+---
+
+# deployment for spring boot microservice cloud-gateway
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-gateway
+  labels:
+    role: cloud-gateway
+    env: demo
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      role: cloud-gateway
+  template:
+    metadata:
+      labels:
+        role: cloud-gateway
+    spec:
+      containers:
+        - name: cloud-gateway
+          image: ghcr.io/ishtiaqsamdani007/cloud-gateway:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9191
+      imagePullSecrets:
+        - name: my-docker-secret
+---
+
+# deployment for spring boot microservice lab-service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lab-service
+  labels:
+    role: lab-service
+    env: demo
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      role: lab-service
+  template:
+    metadata:
+      labels:
+        role: lab-service
+    spec:
+      containers:
+        - name: lab-service
+          image: ghcr.io/ishtiaqsamdani007/lab-service:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9004
+      imagePullSecrets:
+        - name: my-docker-secret
+
+
+---
+# deployment for spring boot microservice patient-service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: patient-service
+  labels:
+    role: patient-service
+    env: demo
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      role: patient-service
+  template:
+    metadata:
+      labels:
+        role: patient-service
+    spec:
+      containers:
+        - name: patient-service
+          image: ghcr.io/ishtiaqsamdani007/patient-service:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9005
+      imagePullSecrets:
+        - name: my-docker-secret
+
+
+---
+# deployment for spring boot microservice service-registry
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-registry
+  labels:
+    role: service-registry
+    env: demo
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      role: service-registry
+  template:
+    metadata:
+      labels:
+        role: service-registry
+    spec:
+      containers:
+        - name: service-registry
+          image: ghcr.io/ishtiaqsamdani007/service-registry:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8761
+      imagePullSecrets:
+        - name: my-docker-secret
+
+---
+# deployment for spring boot microservice test-lab-service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-lab-service
+  labels:
+    role: test-lab-service
+    env: demo
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      role: test-lab-service
+  template:
+    metadata:
+      labels:
+        role: test-lab-service
+    spec:
+      containers:
+        - name: test-lab-service
+          image: ghcr.io/ishtiaqsamdani007/test-lab-service:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9006
+      imagePullSecrets:
+        - name: my-docker-secret
+        
+---
+# deployment for spring boot microservice test-service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-service
+  labels:
+    role: test-service
+    env: demo
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      role: test-service
+  template:
+    metadata:
+      labels:
+        role: test-service
+    spec:
+      containers:
+        - name: test-service
+          image: ghcr.io/ishtiaqsamdani007/test-service:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9007
+      imagePullSecrets:
+        - name: my-docker-secret
+
+---
+# deployment for spring boot microservice user-service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service
+  labels:
+    role: user-service
+    env: demo
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      role: user-service
+  template:
+    metadata:
+      labels:
+        role: user-service
+    spec:
+      containers:
+        - name: user-service
+          image: ghcr.io/ishtiaqsamdani007/user-service:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9008
+      imagePullSecrets:
+        - name: my-docker-secret

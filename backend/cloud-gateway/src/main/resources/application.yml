@@ -62,4 +62,4 @@ eureka:
     service-url:
       defaultZone: https://serviceregistry.bc61.tk/eureka/
   instance:
-    hostname: serviceregistry.bc61.tk
+    hostname: cloud-gateway

@@ -1,0 +1,14 @@
+# service for sql
+apiVersion: v1
+kind: Service
+metadata:
+  name: sql
+  labels:
+    role: sql
+    env: demo
+spec:
+  type: NodePort
+  ports:
+    - port: 3306
+  selector:
+    role: sql

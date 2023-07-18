@@ -4,6 +4,7 @@ metadata:
   name: frontend
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   ingressClassName: nginx
   rules:
@@ -17,13 +18,13 @@ spec:
                 name: frontend
                 port:
                   number: 80
-    - host: auth0-back.spcluster.tk
+    - host: auth0-json.spcluster.tk
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: api
+                name: json-server
                 port:
                   number: 3005

@@ -1,0 +1,37 @@
+# deployment for sql
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sql
+  labels:
+    role: sql
+    env: demo
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      role: sql
+  template:
+    metadata:
+      labels:
+        role: sql
+    spec:
+      containers:
+        - name: sql
+          image: ghcr.io/ishtiaqsamdani007/auth0-sql:latest
+          envFrom:
+            - configMapRef:
+                name: sql-config
+            - secretRef:
+                name: sql-secret
+
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3306
+      imagePullSecrets:
+        - name: my-docker-secret
