@@ -29,7 +29,7 @@ jobs:
                 
     defaults:
         run:
-            working-directory: backend/${{ matrix.services }}
+            working-directory: backend
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
@@ -48,8 +48,8 @@ jobs:
       - name: start strategy
         run: pwd
 
-      - name: Build with Maven
-        run: mvn clean package -DskipTests
+    #   - name: Build with Maven
+    #     run: mvn clean package -DskipTests
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v1
@@ -58,12 +58,12 @@ jobs:
           username: ${{ env.GITHUB_USER }}
           password: ${{ secrets.GIT_TOKEN }}
 
-      - name: Build and Push Docker Image
-        uses: docker/build-push-action@v2
-        with:
-          context: ./backend/${{ matrix.services }}
-          push: true
-          tags: ghcr.io/${{ env.GITHUB_USER }}/auth0-backend-${{ matrix.services }}:${{ github.run_number }}
+    #   - name: Build and Push Docker Image
+    #     uses: docker/build-push-action@v2
+    #     with:
+    #       context: ./backend/${{ matrix.services }}
+    #       push: true
+    #       tags: ghcr.io/${{ env.GITHUB_USER }}/auth0-backend-${{ matrix.services }}:${{ github.run_number }}
           
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -79,6 +79,14 @@ jobs:
             IMAGE: ghcr.io/${{ env.GITHUB_USER }}/auth0-backend-${{ matrix.services }}:${{ github.run_number }}
         run: |
             aws eks --region $aws_region update-kubeconfig --name $cluster_name
+
+
+      - name: Run Strategy
+        run: |
+            cd ${{ matrix.services }}
+            mvn clean package -DskipTests
+            docker build -t ghcr.io/${{ env.GITHUB_USER }}/auth0-backend-${{ matrix.services }}:${{ github.run_number }} .
+            docker push ghcr.io/${{ env.GITHUB_USER }}/auth0-backend-${{ matrix.services }}:${{ github.run_number }}
             kubectl set image deployment/${{ matrix.services }} ${{ matrix.services }}-container=ghcr.io/${{ env.GITHUB_USER }}/auth0-backend-${{ matrix.services }}:${{ github.run_number }}
 
 
@@ -90,6 +98,3 @@ jobs:
 
 
 
-
-
-            
