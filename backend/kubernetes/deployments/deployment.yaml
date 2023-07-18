@@ -22,7 +22,7 @@ spec:
         role: address-service
     spec:
       containers:
-        - name: address-service
+        - name: address-service-container
           image: ghcr.io/ishtiaqsamdani007/address-service:latest
           imagePullPolicy: Always
           ports:
@@ -55,7 +55,7 @@ spec:
         role: appointment-service
     spec:
       containers:
-        - name: appointment-service
+        - name: appointment-service-container
           image: ghcr.io/ishtiaqsamdani007/appointment-service:latest
           imagePullPolicy: Always
           ports:
@@ -89,7 +89,7 @@ spec:
         role: card-service
     spec:
       containers:
-        - name: card-service
+        - name: card-service-container
           image: ghcr.io/ishtiaqsamdani007/card-service:latest
           imagePullPolicy: Always
           ports:
@@ -122,7 +122,7 @@ spec:
         role: cloud-gateway
     spec:
       containers:
-        - name: cloud-gateway
+        - name: cloud-gateway-container
           image: ghcr.io/ishtiaqsamdani007/cloud-gateway:latest
           imagePullPolicy: Always
           ports:
@@ -155,7 +155,7 @@ spec:
         role: lab-service
     spec:
       containers:
-        - name: lab-service
+        - name: lab-service-container
           image: ghcr.io/ishtiaqsamdani007/lab-service:latest
           imagePullPolicy: Always
           ports:
@@ -189,7 +189,7 @@ spec:
         role: patient-service
     spec:
       containers:
-        - name: patient-service
+        - name: patient-service-container
           image: ghcr.io/ishtiaqsamdani007/patient-service:latest
           imagePullPolicy: Always
           ports:
@@ -223,7 +223,7 @@ spec:
         role: service-registry
     spec:
       containers:
-        - name: service-registry
+        - name: service-registry-container
           image: ghcr.io/ishtiaqsamdani007/service-registry:latest
           imagePullPolicy: Always
           ports:
@@ -256,7 +256,7 @@ spec:
         role: test-lab-service
     spec:
       containers:
-        - name: test-lab-service
+        - name: test-lab-service-container
           image: ghcr.io/ishtiaqsamdani007/test-lab-service:latest
           imagePullPolicy: Always
           ports:
@@ -289,7 +289,7 @@ spec:
         role: test-service
     spec:
       containers:
-        - name: test-service
+        - name: test-service-container
           image: ghcr.io/ishtiaqsamdani007/test-service:latest
           imagePullPolicy: Always
           ports:
@@ -322,7 +322,7 @@ spec:
         role: user-service
     spec:
       containers:
-        - name: user-service
+        - name: user-service-container
           image: ghcr.io/ishtiaqsamdani007/user-service:latest
           imagePullPolicy: Always
           ports:

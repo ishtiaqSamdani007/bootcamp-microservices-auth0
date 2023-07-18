@@ -28,3 +28,27 @@ spec:
                 name: json-server
                 port:
                   number: 3005
+    - host: auth0-backend.spcluster.tk
+      http:
+        paths:
+        - path: /$
+          pathType: Exact
+          backend:
+            service:
+              name: service-registry
+              port:
+                number: 8761
+        - path: /eureka
+          pathType: Prefix
+          backend:
+            service:
+              name: service-registry
+              port:
+                number: 8761
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: cloud-gateway
+              port:
+                number: 9191

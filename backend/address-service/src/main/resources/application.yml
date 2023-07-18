@@ -10,6 +10,6 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: https://serviceregistry.bc61.tk/eureka/
+      defaultZone: https://auth0-backend.spcluster.tk/eureka/
   instance:
     hostname: address-service
