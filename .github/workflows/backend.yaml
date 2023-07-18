@@ -35,13 +35,18 @@ jobs:
         uses: actions/checkout@v3
 
       - name: start strategy
-        run: cd ${{matrix.services}}
+        run: |
+            cd ${{matrix.services}}
+            ls
+            pwd
 
       - name: Set up JDK 11
         uses: actions/setup-java@v3
         with:
           distribution: "corretto"
-          java-version: "11"
+          java-version: "17"
+      - name: start strategy
+        run: pwd
 
       - name: Build with Maven
         run: mvn clean package -DskipTests
