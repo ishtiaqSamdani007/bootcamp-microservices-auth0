@@ -32,7 +32,7 @@ jobs:
         with:
           context: ./frontend/db
           push: true
-          tags: ghcr.io/${{ env.GITHUB_USER }}/auth0-json-server:latest
+          tags: ghcr.io/${{ env.GITHUB_USER }}/auth0-json-server:${{ github.sha }}
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -45,11 +45,10 @@ jobs:
         env:
             aws_region: ${{ secrets.AWS_REGION }}
             cluster_name: ${{ secrets.CLUSTER_NAME }}
-            IMAGE: ghcr.io/${{ env.GITHUB_USER }}/vote-k8s-frontend:latest
+            IMAGE: ghcr.io/${{ env.GITHUB_USER }}/vote-k8s-frontend:${{ github.sha }}
         run: |
             aws eks --region $aws_region update-kubeconfig --name $cluster_name
-            kubectl apply -f kubernetes/deployments/deployment.yaml
-            kubectl apply -f kubernetes/services/service.yaml
+            kubeclt set image deployment/json-server json-server=$IMAGE
 
 
 
