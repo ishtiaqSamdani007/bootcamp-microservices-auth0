@@ -34,11 +34,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: start strategy
-        run: |
-            cd ${{matrix.services}}
-            ls
-            pwd
+    #   - name: start strategy
+    #     run: |
+    #         cd ${{matrix.services}}
+    #         ls
+    #         pwd
 
       - name: Set up JDK 11
         uses: actions/setup-java@v3
