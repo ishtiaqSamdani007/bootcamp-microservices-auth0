@@ -61,7 +61,7 @@ jobs:
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v2
         with:
-          context: ./backend/${{ matrix.services }}
+          context: .
           push: true
           tags: ghcr.io/${{ env.GITHUB_USER }}/auth0-backend-${{ matrix.services }}:${{ github.run_number }}
           

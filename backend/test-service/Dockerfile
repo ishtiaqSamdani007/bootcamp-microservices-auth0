@@ -1,4 +1,4 @@
-FROM openjdk:11-alpine
+FROM openjdk:11
 
 WORKDIR /micro-service
 

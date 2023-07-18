@@ -13,3 +13,4 @@ eureka:
       defaultZone: https://auth0-backend.spcluster.tk/eureka/
   instance:
     hostname: user-service
+    
