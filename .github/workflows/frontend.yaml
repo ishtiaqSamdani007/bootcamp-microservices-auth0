@@ -65,11 +65,11 @@ jobs:
           IMAGE: ghcr.io/${{ env.GITHUB_USER }}/auth0-frontend:${{ github.sha }}
         run: |
           aws eks --region $aws_region update-kubeconfig --name $cluster_name
-          kubeclt set image deployment/frontend frontend=$IMAGE
+          kubectl set image deployment/frontend frontend=$IMAGE
 
 
 
-          
+
 
 
 

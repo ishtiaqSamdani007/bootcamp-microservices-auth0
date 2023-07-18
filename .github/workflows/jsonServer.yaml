@@ -48,7 +48,7 @@ jobs:
             IMAGE: ghcr.io/${{ env.GITHUB_USER }}/vote-k8s-frontend:${{ github.sha }}
         run: |
             aws eks --region $aws_region update-kubeconfig --name $cluster_name
-            kubeclt set image deployment/json-server json-server=$IMAGE
+            kubectl set image deployment/json-server json-server=$IMAGE
 
 
 
