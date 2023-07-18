@@ -2,13 +2,12 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: frontend
-  namespace: cloudacademy
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
-    - host: fr.spcluster.tk
+    - host: auth0-front.spcluster.tk
       http:
         paths:
           - path: /
@@ -18,7 +17,7 @@ spec:
                 name: frontend
                 port:
                   number: 80
-    - host: bc.spcluster.tk
+    - host: auth0-back.spcluster.tk
       http:
         paths:
           - path: /
@@ -27,4 +26,4 @@ spec:
               service:
                 name: api
                 port:
-                  number: 8080
+                  number: 3005
