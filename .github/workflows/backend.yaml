@@ -11,25 +11,25 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: backend
     timeout-minutes: 15
-
+    
     strategy:
         matrix:
             services:
-            - address-service
-            - user-service
-            - appointment-service
-            - card-service
-            - cloud-gateway
-            - lab-service
-            - patient-service
-            - service-registry
-            - test-lab-service
-            - test-service
-
+                - address-service
+                - user-service
+                - appointment-service
+                - card-service
+                - cloud-gateway
+                - lab-service
+                - patient-service
+                - service-registry
+                - test-lab-service
+                - test-service
+                
+    defaults:
+        run:
+            working-directory: backend/${{ matrix.services }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
