@@ -3,7 +3,6 @@ kind: Ingress
 metadata:
   name: frontend
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   ingressClassName: nginx

@@ -10,6 +10,6 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: https://auth0-backend.spcluster.tk/eureka/
+      defaultZone: 
   instance:
     hostname: card-service

@@ -23,10 +23,17 @@ spec:
     spec:
       containers:
         - name: address-service-container
-          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-address-service:v12
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-address-service:v21
           imagePullPolicy: Always
           ports:
-            - containerPort: 9001
+            - containerPort: 9001        
+          env:
+            - name: EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE
+              value: https://auth0-backend.spcluster.tk/eureka/
+
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: address-service
+      
       imagePullSecrets:
         - name: my-docker-secret
 ---
@@ -56,10 +63,17 @@ spec:
     spec:
       containers:
         - name: appointment-service-container
-          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-appointment-service:v12
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-appointment-service:v21
           imagePullPolicy: Always
           ports:
             - containerPort: 9002
+          env:
+            - name: EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE
+              value: https://auth0-backend.spcluster.tk/eureka/
+
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: appointment-service
+      
       imagePullSecrets:
         - name: my-docker-secret
 
@@ -90,10 +104,17 @@ spec:
     spec:
       containers:
         - name: card-service-container
-          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-card-service:v12
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-card-service:v21
           imagePullPolicy: Always
           ports:
             - containerPort: 9003
+          env:
+            - name: EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE
+              value: https://auth0-backend.spcluster.tk/eureka/
+
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: card-service
+      
       imagePullSecrets:
         - name: my-docker-secret
 ---
@@ -123,10 +144,17 @@ spec:
     spec:
       containers:
         - name: cloud-gateway-container
-          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-cloud-gateway:v12
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-cloud-gateway:v21
           imagePullPolicy: Always
           ports:
             - containerPort: 9191
+          env:
+            - name: EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE
+              value: https://auth0-backend.spcluster.tk/eureka/
+
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: cloud-gateway
+      
       imagePullSecrets:
         - name: my-docker-secret
 ---
@@ -156,10 +184,17 @@ spec:
     spec:
       containers:
         - name: lab-service-container
-          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-lab-service:v12
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-lab-service:v21
           imagePullPolicy: Always
           ports:
             - containerPort: 9004
+          env:
+            - name: EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE
+              value: https://auth0-backend.spcluster.tk/eureka/
+
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: lab-service
+      
       imagePullSecrets:
         - name: my-docker-secret
 
@@ -190,10 +225,17 @@ spec:
     spec:
       containers:
         - name: patient-service-container
-          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-patient-service:v12
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-patient-service:v21
           imagePullPolicy: Always
           ports:
             - containerPort: 9005
+          env:
+            - name: EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE
+              value: https://auth0-backend.spcluster.tk/eureka/
+
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: patient-service
+      
       imagePullSecrets:
         - name: my-docker-secret
 
@@ -224,10 +266,17 @@ spec:
     spec:
       containers:
         - name: service-registry-container
-          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-service-registry:v12
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-service-registry:v21
           imagePullPolicy: Always
           ports:
             - containerPort: 8761
+          env:
+            - name: EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE
+              value: https://auth0-backend.spcluster.tk/eureka/
+
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: service-registry
+      
       imagePullSecrets:
         - name: my-docker-secret
 
@@ -257,10 +306,17 @@ spec:
     spec:
       containers:
         - name: test-lab-service-container
-          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-test-lab-service:v12
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-test-lab-service:v21
           imagePullPolicy: Always
           ports:
             - containerPort: 9006
+          env:
+            - name: EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE
+              value: https://auth0-backend.spcluster.tk/eureka/
+
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: test-lab-service
+      
       imagePullSecrets:
         - name: my-docker-secret
         
@@ -290,10 +346,17 @@ spec:
     spec:
       containers:
         - name: test-service-container
-          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-test-service:v12
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-test-service:v21
           imagePullPolicy: Always
           ports:
             - containerPort: 9007
+          env:
+            - name: EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE
+              value: https://auth0-backend.spcluster.tk/eureka/
+
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: test-service
+      
       imagePullSecrets:
         - name: my-docker-secret
 
@@ -323,9 +386,16 @@ spec:
     spec:
       containers:
         - name: user-service-container
-          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-user-service:v12
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-user-service:v21
           imagePullPolicy: Always
           ports:
             - containerPort: 9008
+          env:
+            - name: EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE
+              value: https://auth0-backend.spcluster.tk/eureka/
+
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: user-service
+      
       imagePullSecrets:
         - name: my-docker-secret
