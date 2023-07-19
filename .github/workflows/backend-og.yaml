@@ -44,26 +44,35 @@ jobs:
         run: |
           aws eks --region $aws_region update-kubeconfig --name $cluster_name
 
-  deploy_service:
-    needs: deploy_template
-    runs-on: ubuntu-latest
-    steps:
-      - name: Build and Deploy the service
-        env:
-          SERVICE_NAME: ${{ matrix.service }}
-        run: |
-          cd backend/${SERVICE_NAME}
-          mvn clean package -DskipTests
-          docker build -t ghcr.io/${{ env.GITHUB_USER }}/auth0-bootcamp-backend-${SERVICE_NAME}:v${{ github.run_number }} .
-          docker push ghcr.io/${{ env.GITHUB_USER }}/auth0-bootcamp-backend-${SERVICE_NAME}:v${{ github.run_number }}
-          kubectl set image deployment/${SERVICE_NAME} ${SERVICE_NAME}-container=ghcr.io/${{ env.GITHUB_USER }}/auth0-bootcamp-backend-${SERVICE_NAME}:v${{ github.run_number }}
+#   deploy_service:
+#     needs: deploy_template
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Build and Deploy the service
+#         env:
+#           SERVICE_NAME: ${{ matrix.service }}
+#         run: |
+#           pwd ls  
+#           cd backend/${SERVICE_NAME}
+#           mvn clean package -DskipTests
+#           docker build -t ghcr.io/${{ env.GITHUB_USER }}/auth0-bootcamp-backend-${SERVICE_NAME}:v${{ github.run_number }} .
+#           docker push ghcr.io/${{ env.GITHUB_USER }}/auth0-bootcamp-backend-${SERVICE_NAME}:v${{ github.run_number }}
+#           kubectl set image deployment/${SERVICE_NAME} ${SERVICE_NAME}-container=ghcr.io/${{ env.GITHUB_USER }}/auth0-bootcamp-backend-${SERVICE_NAME}:v${{ github.run_number }}
 
   deploy_all:
-    needs: [deploy_service]
+    needs: deploy_template
     strategy:
       matrix:
         service: [address-service, user-service, appointment-service, card-service, cloud-gateway, lab-service, patient-service, service-registry, test-lab-service, test-service]
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy All Services
-        run: echo "All services are deployed successfully!"
+      - name: Build and Deploy the service
+        env:
+            SERVICE_NAME: ${{ matrix.service }}
+        run: |
+            pwd ls  
+            cd backend/${SERVICE_NAME}
+            mvn clean package -DskipTests
+            docker build -t ghcr.io/${{ env.GITHUB_USER }}/auth0-bootcamp-backend-${SERVICE_NAME}:v${{ github.run_number }} .
+            docker push ghcr.io/${{ env.GITHUB_USER }}/auth0-bootcamp-backend-${SERVICE_NAME}:v${{ github.run_number }}
+            kubectl set image deployment/${SERVICE_NAME} ${SERVICE_NAME}-container=ghcr.io/${{ env.GITHUB_USER }}/auth0-bootcamp-backend-${SERVICE_NAME}:v${{ github.run_number }}
