@@ -70,7 +70,8 @@ jobs:
         env:
             SERVICE_NAME: ${{ matrix.service }}
         run: |
-            pwd ls  
+            pwd 
+            ls  
             cd backend/${SERVICE_NAME}
             mvn clean package -DskipTests
             docker build -t ghcr.io/${{ env.GITHUB_USER }}/auth0-bootcamp-backend-${SERVICE_NAME}:v${{ github.run_number }} .
@@ -82,4 +83,3 @@ jobs:
 
 
 
-            
