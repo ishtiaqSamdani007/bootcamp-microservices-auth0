@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: address-service-container
-          image: ghcr.io/ishtiaqsamdani007/address-service:latest
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-address-service:v12
           imagePullPolicy: Always
           ports:
             - containerPort: 9001
@@ -56,7 +56,7 @@ spec:
     spec:
       containers:
         - name: appointment-service-container
-          image: ghcr.io/ishtiaqsamdani007/appointment-service:latest
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-appointment-service:v12
           imagePullPolicy: Always
           ports:
             - containerPort: 9002
@@ -90,7 +90,7 @@ spec:
     spec:
       containers:
         - name: card-service-container
-          image: ghcr.io/ishtiaqsamdani007/card-service:latest
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-card-service:v12
           imagePullPolicy: Always
           ports:
             - containerPort: 9003
@@ -123,7 +123,7 @@ spec:
     spec:
       containers:
         - name: cloud-gateway-container
-          image: ghcr.io/ishtiaqsamdani007/cloud-gateway:latest
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-cloud-gateway:v12
           imagePullPolicy: Always
           ports:
             - containerPort: 9191
@@ -156,7 +156,7 @@ spec:
     spec:
       containers:
         - name: lab-service-container
-          image: ghcr.io/ishtiaqsamdani007/lab-service:latest
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-lab-service:v12
           imagePullPolicy: Always
           ports:
             - containerPort: 9004
@@ -190,7 +190,7 @@ spec:
     spec:
       containers:
         - name: patient-service-container
-          image: ghcr.io/ishtiaqsamdani007/patient-service:latest
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-patient-service:v12
           imagePullPolicy: Always
           ports:
             - containerPort: 9005
@@ -224,7 +224,7 @@ spec:
     spec:
       containers:
         - name: service-registry-container
-          image: ghcr.io/ishtiaqsamdani007/service-registry:latest
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-service-registry:v12
           imagePullPolicy: Always
           ports:
             - containerPort: 8761
@@ -257,7 +257,7 @@ spec:
     spec:
       containers:
         - name: test-lab-service-container
-          image: ghcr.io/ishtiaqsamdani007/test-lab-service:latest
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-test-lab-service:v12
           imagePullPolicy: Always
           ports:
             - containerPort: 9006
@@ -290,7 +290,7 @@ spec:
     spec:
       containers:
         - name: test-service-container
-          image: ghcr.io/ishtiaqsamdani007/test-service:latest
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-test-service:v12
           imagePullPolicy: Always
           ports:
             - containerPort: 9007
@@ -323,7 +323,7 @@ spec:
     spec:
       containers:
         - name: user-service-container
-          image: ghcr.io/ishtiaqsamdani007/user-service:latest
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-user-service:v12
           imagePullPolicy: Always
           ports:
             - containerPort: 9008
