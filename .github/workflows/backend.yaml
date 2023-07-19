@@ -43,6 +43,7 @@ jobs:
           cluster_name: ${{ secrets.CLUSTER_NAME }}
         run: |
           aws eks --region $aws_region update-kubeconfig --name $cluster_name
+          ls
 
 #   deploy_service:
 #     needs: deploy_template
@@ -72,6 +73,7 @@ jobs:
         run: |
             echo pwd 
             pwd
+
             ls  
 
 
