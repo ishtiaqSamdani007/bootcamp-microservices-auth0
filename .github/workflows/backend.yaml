@@ -76,3 +76,10 @@ jobs:
             docker build -t ghcr.io/${{ env.GITHUB_USER }}/auth0-bootcamp-backend-${SERVICE_NAME}:v${{ github.run_number }} .
             docker push ghcr.io/${{ env.GITHUB_USER }}/auth0-bootcamp-backend-${SERVICE_NAME}:v${{ github.run_number }}
             kubectl set image deployment/${SERVICE_NAME} ${SERVICE_NAME}-container=ghcr.io/${{ env.GITHUB_USER }}/auth0-bootcamp-backend-${SERVICE_NAME}:v${{ github.run_number }}
+
+
+
+
+
+
+            
