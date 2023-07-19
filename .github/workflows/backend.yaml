@@ -70,13 +70,10 @@ jobs:
         env:
             SERVICE_NAME: ${{ matrix.service }}
         run: |
-            pwd 
+            echo pwd 
+            pwd
             ls  
-            cd backend/${SERVICE_NAME}
-            mvn clean package -DskipTests
-            docker build -t ghcr.io/${{ env.GITHUB_USER }}/auth0-bootcamp-backend-${SERVICE_NAME}:v${{ github.run_number }} .
-            docker push ghcr.io/${{ env.GITHUB_USER }}/auth0-bootcamp-backend-${SERVICE_NAME}:v${{ github.run_number }}
-            kubectl set image deployment/${SERVICE_NAME} ${SERVICE_NAME}-container=ghcr.io/${{ env.GITHUB_USER }}/auth0-bootcamp-backend-${SERVICE_NAME}:v${{ github.run_number }}
+
 
 
 
