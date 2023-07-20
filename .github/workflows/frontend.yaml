@@ -34,6 +34,9 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm install --legacy-peer-deps
 
+      - name: Retrieve the env vars
+        run: echo "${{ secrets.FRONTEND_ENV}}" > .env
+
       - name: Build application
         run: npm run build
 

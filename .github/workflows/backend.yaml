@@ -44,11 +44,10 @@ jobs:
         env: 
           aws_region: ${{ secrets.AWS_REGION }}
           cluster_name: ${{ secrets.CLUSTER_NAME }}
+          SERVICE_NAME: ${{ matrix.service }}
         run: |
           aws eks --region $aws_region update-kubeconfig --name $cluster_name
       - name: Build and Deploy the service
-        env:
-            SERVICE_NAME: ${{ matrix.service }}
         run: |
             cd backend/${SERVICE_NAME}
             mvn clean package -DskipTests
