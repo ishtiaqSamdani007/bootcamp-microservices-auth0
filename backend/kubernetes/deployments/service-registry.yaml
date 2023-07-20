@@ -23,18 +23,22 @@ spec:
     spec:
       containers:
         - name: service-registry-container
-          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-service-registry:v26
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-service-registry:v24
           imagePullPolicy: Always
           ports:
             - containerPort: 8761
-          envFrom:
-            - configMapRef:
-                name: backend-config
-            - secretRef:
-                name: backend-secret
           env:
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+              value: https://auth0-backend.spcluster.tk/eureka/
+
             - name: EUREKA_INSTANCE_HOSTNAME
               value: service-registry
+      
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://3.128.186.244:31025/zemoso_diagnostics?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+      
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: Bootcamp@61
       
       imagePullSecrets:
         - name: my-docker-secret
