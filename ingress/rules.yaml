@@ -51,3 +51,73 @@ spec:
               name: cloud-gateway
               port:
                 number: 9191
+
+
+# - host: bc.spcluster.tk
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: service-registry-service
+#             port:
+#               number: 8761
+#       - path: /address
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: address-service
+#             port:
+#               number: 9001
+
+#       - path: /appointments
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: appointment-service
+#             port:
+#               number: 9002
+#       - path: /cards
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: card-service
+#             port:
+#               number: 9003
+#       - path: /labs
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: lab-service
+#             port:
+#               number: 9004
+#       - path: /patients
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: patient-service
+#             port:
+#               number: 9005
+
+#       - path: /testlabs
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: test-lab-service
+#             port:
+#               number: 9006
+#       - path: /tests
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: test-service
+#             port:
+#               number: 9007
+#       - path: /user
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: user-service
+#             port:
+#               number: 9008
