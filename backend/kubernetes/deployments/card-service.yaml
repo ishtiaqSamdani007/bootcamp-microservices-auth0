@@ -31,7 +31,8 @@ spec:
             - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
               value: https://auth0-backend.spcluster.tk/eureka/
 
-           
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: card-service
 
             - name: SPRING_DATASOURCE_URL
               value: jdbc:mysql://3.128.186.244:31025/zemoso_diagnostics?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
