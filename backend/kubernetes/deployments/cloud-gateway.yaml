@@ -35,7 +35,7 @@ spec:
               value: cloud-gateway
       
             - name: SPRING_DATASOURCE_URL
-              value: jdbc:mysql://3.128.186.244:31025/zemoso_diagnostics?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+              value: jdbc:mysql://3.128.186.244:32307/zemoso_diagnostics?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
       
             - name: SPRING_DATASOURCE_PASSWORD
               value: Bootcamp@61
