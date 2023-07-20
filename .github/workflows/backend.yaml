@@ -40,20 +40,18 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Adding EKS cluster
+      - name: Adding EKS cluster and Build and Deploy the service
         env: 
           aws_region: ${{ secrets.AWS_REGION }}
           cluster_name: ${{ secrets.CLUSTER_NAME }}
           SERVICE_NAME: ${{ matrix.service }}
         run: |
           aws eks --region $aws_region update-kubeconfig --name $cluster_name
-      - name: Build and Deploy the service
-        run: |
-            cd backend/${SERVICE_NAME}
-            mvn clean package -DskipTests
-            docker build -t ghcr.io/${{ env.GITHUB_USER }}/auth0-bootcamp-backend-${SERVICE_NAME}:v${{ github.run_number }} .
-            docker push ghcr.io/${{ env.GITHUB_USER }}/auth0-bootcamp-backend-${SERVICE_NAME}:v${{ github.run_number }}
-            kubectl set image deployment/${SERVICE_NAME} ${SERVICE_NAME}-container=ghcr.io/${{ env.GITHUB_USER }}/auth0-bootcamp-backend-${SERVICE_NAME}:v${{ github.run_number }}
+          cd backend/${SERVICE_NAME}
+          mvn clean package -DskipTests
+          docker build -t ghcr.io/${{ env.GITHUB_USER }}/auth0-bootcamp-backend-${SERVICE_NAME}:v${{ github.run_number }} .
+          docker push ghcr.io/${{ env.GITHUB_USER }}/auth0-bootcamp-backend-${SERVICE_NAME}:v${{ github.run_number }}
+          kubectl set image deployment/${SERVICE_NAME} ${SERVICE_NAME}-container=ghcr.io/${{ env.GITHUB_USER }}/auth0-bootcamp-backend-${SERVICE_NAME}:v${{ github.run_number }}
 
 
 
