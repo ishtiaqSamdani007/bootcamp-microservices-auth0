@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: address-service-container
-          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-address-service:v21
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-address-service:v23
           imagePullPolicy: Always
           ports:
             - containerPort: 9001        
@@ -33,6 +33,9 @@ spec:
 
             - name: EUREKA_INSTANCE_HOSTNAME
               value: address-service
+      
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://3.128.186.244:31025/zemoso_diagnostics?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
       
       imagePullSecrets:
         - name: my-docker-secret
@@ -63,7 +66,7 @@ spec:
     spec:
       containers:
         - name: appointment-service-container
-          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-appointment-service:v21
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-appointment-service:v23
           imagePullPolicy: Always
           ports:
             - containerPort: 9002
@@ -73,6 +76,9 @@ spec:
 
             - name: EUREKA_INSTANCE_HOSTNAME
               value: appointment-service
+      
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://3.128.186.244:31025/zemoso_diagnostics?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
       
       imagePullSecrets:
         - name: my-docker-secret
@@ -104,7 +110,7 @@ spec:
     spec:
       containers:
         - name: card-service-container
-          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-card-service:v21
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-card-service:v23
           imagePullPolicy: Always
           ports:
             - containerPort: 9003
@@ -117,6 +123,12 @@ spec:
 
             - name: SPRING_DATASOURCE_URL
               value: jdbc:mysql://3.128.186.244:31025/zemoso_diagnostics?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+            
+            - name: SPRING_DATASOURCE_USERNAME
+              value: root
+            
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: Bootcamp@61
       
       imagePullSecrets:
         - name: my-docker-secret
@@ -147,7 +159,7 @@ spec:
     spec:
       containers:
         - name: cloud-gateway-container
-          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-cloud-gateway:v21
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-cloud-gateway:v23
           imagePullPolicy: Always
           ports:
             - containerPort: 9191
@@ -157,6 +169,9 @@ spec:
 
             - name: EUREKA_INSTANCE_HOSTNAME
               value: cloud-gateway
+      
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://3.128.186.244:31025/zemoso_diagnostics?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
       
       imagePullSecrets:
         - name: my-docker-secret
@@ -187,7 +202,7 @@ spec:
     spec:
       containers:
         - name: lab-service-container
-          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-lab-service:v21
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-lab-service:v23
           imagePullPolicy: Always
           ports:
             - containerPort: 9004
@@ -197,6 +212,9 @@ spec:
 
             - name: EUREKA_INSTANCE_HOSTNAME
               value: lab-service
+      
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://3.128.186.244:31025/zemoso_diagnostics?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
       
       imagePullSecrets:
         - name: my-docker-secret
@@ -228,7 +246,7 @@ spec:
     spec:
       containers:
         - name: patient-service-container
-          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-patient-service:v21
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-patient-service:v23
           imagePullPolicy: Always
           ports:
             - containerPort: 9005
@@ -238,6 +256,9 @@ spec:
 
             - name: EUREKA_INSTANCE_HOSTNAME
               value: patient-service
+      
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://3.128.186.244:31025/zemoso_diagnostics?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
       
       imagePullSecrets:
         - name: my-docker-secret
@@ -269,7 +290,7 @@ spec:
     spec:
       containers:
         - name: service-registry-container
-          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-service-registry:v21
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-service-registry:v23
           imagePullPolicy: Always
           ports:
             - containerPort: 8761
@@ -279,6 +300,9 @@ spec:
 
             - name: EUREKA_INSTANCE_HOSTNAME
               value: service-registry
+      
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://3.128.186.244:31025/zemoso_diagnostics?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
       
       imagePullSecrets:
         - name: my-docker-secret
@@ -309,7 +333,7 @@ spec:
     spec:
       containers:
         - name: test-lab-service-container
-          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-test-lab-service:v21
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-test-lab-service:v23
           imagePullPolicy: Always
           ports:
             - containerPort: 9006
@@ -353,7 +377,7 @@ spec:
     spec:
       containers:
         - name: test-service-container
-          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-test-service:v21
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-test-service:v23
           imagePullPolicy: Always
           ports:
             - containerPort: 9007
@@ -363,6 +387,9 @@ spec:
 
             - name: EUREKA_INSTANCE_HOSTNAME
               value: test-service
+      
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://3.128.186.244:31025/zemoso_diagnostics?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
       
       imagePullSecrets:
         - name: my-docker-secret
@@ -393,7 +420,7 @@ spec:
     spec:
       containers:
         - name: user-service-container
-          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-user-service:v21
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-user-service:v23
           imagePullPolicy: Always
           ports:
             - containerPort: 9008
@@ -403,6 +430,9 @@ spec:
 
             - name: EUREKA_INSTANCE_HOSTNAME
               value: user-service
+      
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://3.128.186.244:31025/zemoso_diagnostics?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
       
       imagePullSecrets:
         - name: my-docker-secret
