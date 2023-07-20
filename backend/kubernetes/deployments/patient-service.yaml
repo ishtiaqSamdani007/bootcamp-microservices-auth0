@@ -1,0 +1,44 @@
+# deployment for spring boot microservice patient-service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: patient-service
+  labels:
+    role: patient-service
+    env: demo
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      role: patient-service
+  template:
+    metadata:
+      labels:
+        role: patient-service
+    spec:
+      containers:
+        - name: patient-service-container
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-patient-service:v24
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9005
+          env:
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+              value: https://auth0-backend.spcluster.tk/eureka/
+
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: patient-service
+      
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://3.128.186.244:31025/zemoso_diagnostics?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+      
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: Bootcamp@61
+      
+      imagePullSecrets:
+        - name: my-docker-secret

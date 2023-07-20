@@ -39,9 +39,6 @@ spec:
             initialDelaySeconds: 5
             periodSeconds: 5
             successThreshold: 1
-      - name: SPRING_DATASOURCE_URL
-              value: jdbc:mysql://3.128.186.244:31025/zemoso_diagnostics?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
-      
       imagePullSecrets:
         - name: my-docker-secret
 

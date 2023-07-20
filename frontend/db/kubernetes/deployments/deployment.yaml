@@ -8,11 +8,6 @@ metadata:
     env: demo
 spec:
   replicas: 1
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 25%
   selector:
     matchLabels:
       role: json-server
@@ -27,8 +22,5 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 3005
-      - name: SPRING_DATASOURCE_URL
-              value: jdbc:mysql://3.128.186.244:31025/zemoso_diagnostics?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
-      
       imagePullSecrets:
         - name: my-docker-secret

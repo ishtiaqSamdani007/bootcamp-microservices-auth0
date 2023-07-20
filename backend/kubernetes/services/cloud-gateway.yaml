@@ -1,0 +1,13 @@
+# service for spring boot microservice cloud-gateway
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloud-gateway
+  labels:
+    role: cloud-gateway
+    env: demo
+spec:
+  ports:
+    - port: 9191
+  selector:
+    role: cloud-gateway

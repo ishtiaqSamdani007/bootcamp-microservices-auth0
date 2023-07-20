@@ -1,0 +1,13 @@
+# service for spring boot microservice card-service
+apiVersion: v1
+kind: Service
+metadata:
+  name: card-service
+  labels:
+    role: card-service
+    env: demo
+spec:
+  ports:
+    - port: 9003
+  selector:
+    role: card-service

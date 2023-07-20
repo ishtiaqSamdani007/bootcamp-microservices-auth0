@@ -1,0 +1,13 @@
+# service for spring boot microservice address-service
+apiVersion: v1
+kind: Service
+metadata:
+  name: address-service
+  labels:
+    role: address-service
+    env: demo
+spec:
+  ports:
+    - port: 9001
+  selector:
+    role: address-service

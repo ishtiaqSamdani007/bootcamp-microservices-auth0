@@ -1,0 +1,13 @@
+# service for spring boot microservice appointment-service
+apiVersion: v1
+kind: Service
+metadata:
+  name: appointment-service
+  labels:
+    role: appointment-service
+    env: demo
+spec:
+  ports:
+    - port: 9002
+  selector:
+    role: appointment-service

@@ -1,0 +1,13 @@
+# service for spring boot microservice lab-service
+apiVersion: v1
+kind: Service
+metadata:
+  name: lab-service
+  labels:
+    role: lab-service
+    env: demo
+spec:
+  ports:
+    - port: 9004
+  selector:
+    role: lab-service

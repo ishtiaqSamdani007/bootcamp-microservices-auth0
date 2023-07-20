@@ -1,0 +1,48 @@
+# deployment for spring boot microservice card-service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: card-service
+  labels:
+    role: card-service
+    env: demo
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      role: card-service
+  template:
+    metadata:
+      labels:
+        role: card-service
+    spec:
+      containers:
+        - name: card-service-container
+          image: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-card-service:v24
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9003
+          env:
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+              value: https://auth0-backend.spcluster.tk/eureka/
+
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: card-service
+
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://3.128.186.244:31025/zemoso_diagnostics?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+            
+            - name: SPRING_DATASOURCE_USERNAME
+              value: root
+            
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: Bootcamp@61
+      
+      
+      imagePullSecrets:
+        - name: my-docker-secret

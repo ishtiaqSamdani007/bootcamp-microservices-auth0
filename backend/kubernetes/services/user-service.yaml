@@ -1,0 +1,13 @@
+# service for spring boot microservice user-service
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-service
+  labels:
+    role: user-service
+    env: demo
+spec:
+  ports:
+    - port: 9008
+  selector:
+    role: user-service

@@ -1,0 +1,13 @@
+# service for spring boot microservice patient-service
+apiVersion: v1
+kind: Service
+metadata:
+  name: patient-service
+  labels:
+    role: patient-service
+    env: demo
+spec:
+  ports:
+    - port: 9005
+  selector:
+    role: patient-service
