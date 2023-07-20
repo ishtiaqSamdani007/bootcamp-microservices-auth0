@@ -28,7 +28,7 @@ spec:
           ports:
             - containerPort: 9001        
           env:
-            - name: EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
               value: https://auth0-backend.spcluster.tk/eureka/
 
             - name: EUREKA_INSTANCE_HOSTNAME
@@ -68,7 +68,7 @@ spec:
           ports:
             - containerPort: 9002
           env:
-            - name: EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
               value: https://auth0-backend.spcluster.tk/eureka/
 
             - name: EUREKA_INSTANCE_HOSTNAME
@@ -109,11 +109,14 @@ spec:
           ports:
             - containerPort: 9003
           env:
-            - name: EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
               value: https://auth0-backend.spcluster.tk/eureka/
 
             - name: EUREKA_INSTANCE_HOSTNAME
               value: card-service
+
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://3.128.186.244:31025/zemoso_diagnostics?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
       
       imagePullSecrets:
         - name: my-docker-secret
@@ -149,7 +152,7 @@ spec:
           ports:
             - containerPort: 9191
           env:
-            - name: EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
               value: https://auth0-backend.spcluster.tk/eureka/
 
             - name: EUREKA_INSTANCE_HOSTNAME
@@ -189,7 +192,7 @@ spec:
           ports:
             - containerPort: 9004
           env:
-            - name: EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
               value: https://auth0-backend.spcluster.tk/eureka/
 
             - name: EUREKA_INSTANCE_HOSTNAME
@@ -230,7 +233,7 @@ spec:
           ports:
             - containerPort: 9005
           env:
-            - name: EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
               value: https://auth0-backend.spcluster.tk/eureka/
 
             - name: EUREKA_INSTANCE_HOSTNAME
@@ -271,7 +274,7 @@ spec:
           ports:
             - containerPort: 8761
           env:
-            - name: EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
               value: https://auth0-backend.spcluster.tk/eureka/
 
             - name: EUREKA_INSTANCE_HOSTNAME
@@ -311,11 +314,15 @@ spec:
           ports:
             - containerPort: 9006
           env:
-            - name: EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
               value: https://auth0-backend.spcluster.tk/eureka/
 
             - name: EUREKA_INSTANCE_HOSTNAME
               value: test-lab-service
+# spring.datasource.url=jdbc:mysql://3.128.186.244:31025/zemoso_diagnostics?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://3.128.186.244:31025/zemoso_diagnostics?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
       
       imagePullSecrets:
         - name: my-docker-secret
@@ -351,7 +358,7 @@ spec:
           ports:
             - containerPort: 9007
           env:
-            - name: EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
               value: https://auth0-backend.spcluster.tk/eureka/
 
             - name: EUREKA_INSTANCE_HOSTNAME
@@ -391,7 +398,7 @@ spec:
           ports:
             - containerPort: 9008
           env:
-            - name: EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
               value: https://auth0-backend.spcluster.tk/eureka/
 
             - name: EUREKA_INSTANCE_HOSTNAME
